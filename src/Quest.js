@@ -1,19 +1,22 @@
 import React from 'react'
 import { useRef } from 'react'
 import handleTicker from './Input'
+import handleNotepad from './Input'
 
-export default function Quest({quest,handleTicker}) {
+export default function Quest({quest,handleTicker, handleNotepad}) {
     const selector = useRef()
     function logg(){
     console.log(quest.name)}
-    const handleSelector = () =>{
-        handleTicker(quest.key)
+    const handleTickerSelector = () =>{
+      handleTicker(quest.key)
     }
-
+    const handleRadioSelecting = () =>{    
+      handleNotepad(quest.key)
+    }
   return (
     <div>
-        <input type="checkbox" checked={quest.ticker} onChange={handleSelector}/>
-        <label><input type='radio' name='QuestChoose' className='RadioQuest'/>{quest.name}</label>
+        <input type="checkbox" checked={quest.ticker} onChange={handleTickerSelector}/>
+        <label><input type='radio' name='QuestChoose' className='RadioQuest'onChange={handleRadioSelecting}/>{quest.name}</label>
     </div>
   )
 }
