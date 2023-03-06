@@ -1,13 +1,13 @@
 import React from 'react'
+import * as Icons from 'react-bootstrap-icons'
 
 export default function Navbar() {
   return (
-    <nav id='navigationMenu'>
-        <ul>
-            <li>Strona 1</li>
-            <li>Strona 2</li>
-            <li>Strona 3</li>
-        </ul>
-    </nav>
+    <div>
+        <div className="navigationMenuBlocks">
+            <a className="block" href="https://github.com/Sir-Lancelot-Du-Lac"><Icons.Github/></a>
+            <a className="block" href="Lancelot Klakson#8978"><Icons.Discord/></a>
+        </div>
+    </div>
   )
 }

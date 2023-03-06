@@ -36,22 +36,22 @@ export default function Input() {
       console.log(currentQuest)
     }
   return (
-    <div>
-    <div id="left">
-    <Writer currentQuest={currentQuest}/>
-    </div>
-    <div id="right">
-    <div id="first">
-        <input type="text" ref={NameOfQuest}/>
-        <button onClick={handleAddQuest}>Add your quest</button>
-        <button onClick={logg2}>Logg</button>    
-    </div>
-    <div id="second">
-      <form>
-        <Folder Folders={Folders} handleTicker={handleTicker} handleNotepad={handleNotepad}/>
-      </form>
-    </div>
-    </div>
+    <div id="Columns">
+      <div id="left">
+        <Writer currentQuest={currentQuest}/>
+      </div>
+      <div id="right">
+        <div id="first">
+            <input type="text" ref={NameOfQuest}/>
+            <button onClick={handleAddQuest}>Add your quest</button>
+            <button onClick={logg2}>Logg</button>    
+        </div>
+        <div id="second">
+          <form>
+            <Folder Folders={Folders} handleTicker={handleTicker} handleNotepad={handleNotepad}/>
+          </form>
+        </div>
+      </div>
     </div>
   )
 }

@@ -24,9 +24,7 @@ export default function Writer({currentQuest}) {
   return (
 
     <div>
-        Write your notes
-
-        <p>Here:</p>
+        <p>Write your notes here:</p>
         <input type="text" className='EditOfQuestName' onChange={handleName} value={name} placeholder="title"/><br/>
         <textarea rows='15' className='EditOfQuestContent' onChange={handleContent} value={content} placeholder="content"/><br/>
         <button>Save</button>

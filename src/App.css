@@ -1,7 +1,8 @@
 :root{
   --colorBC: #FFF;
   --colorTXT: #000;
-  --colorTAB: #b4ff3a;
+  --colorTAB: #ac80ff;
+  --colorNAV: #ac80ff;
 }
 .textOP{
   opacity: 1;
@@ -9,40 +10,48 @@
   font-size: 15px;
   font-weight: bold;
 }
-#navigationMenu{
+#navigationMenuBlocks{
   position: absolute;
-  z-index: 1000;
-  
+  display:inline-block;
+  width: 100%;
 }
-#navigationMenu > ul > li{
+.block{
   display: inline-block;
-  margin: 50px;
+  background-color: var(--colorNAV);
+  width: 50%;
+  text-align: center;
+  height: auto;
+  font-size: 30px;
+  padding-top: 5px;
 }
 #ColorSettings{
   position: absolute;
   z-index: 1000;
   bottom: 0;
 }
+#Columns{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
 #left{
   background-color: rgb(228, 228, 255);
-  width: 50%;
   left: 0;
   height: 100%;
-
 }
 #right{
-  width: 50%;
   right: 0;
-
+  background-color: var(--colorBC);
+  height: 100%;
+  padding-top: 15px;
 }
 #left, #right {
-    height: 100%;
+    float: left;
     width: 50%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
     overflow-x: hidden;
     padding-top: 20px;
+    text-align: center;
+    z-index: 1000;
   }
 #second{
   padding-left: 35px;
@@ -67,8 +76,6 @@
   color: #76cf9f;
 }
 body{
-  text-align: center;
-  background-color: var(--colorBC);
   color: var(--colorTXT);
 }
 table,td,tr{
@@ -117,5 +124,12 @@ li{
 }
 ol > li:hover > ul {
   display:block;
+}
+a{
+  color: var(--colorTXT);
+  text-decoration: none;
+}
+a:hover{
+  color: #ffffff;
 }
 
