@@ -8,8 +8,6 @@ export default function Input() {
     const [Folders,setFolders] = useState([])
     const [currentQuest,setCurrentQuest] = useState({key: "default",name: "defaultName",content:"defaultContent"})
     const NameOfQuest = useRef()
-    const currentName = "Name"
-    const currentContent = "Content"
 
     function logg2(){
         console.log(Folders)
@@ -35,10 +33,17 @@ export default function Input() {
       setCurrentQuest({key: quest.key,name: quest.name, content: quest.content})
       console.log(currentQuest)
     }
+    const saveQuest = (name,content,id) =>{
+      const newFolders = [...Folders]
+      const quest = newFolders.find(quest => quest.key===id)
+      quest.name = name
+      quest.content = content
+      setFolders(newFolders)
+    }
   return (
     <div id="Columns">
       <div id="left">
-        <Writer currentQuest={currentQuest}/>
+        <Writer currentQuest={currentQuest} saveQuest={saveQuest}/>
       </div>
       <div id="right">
         <div id="first">

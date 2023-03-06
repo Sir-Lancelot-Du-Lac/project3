@@ -1,10 +1,6 @@
 import React from 'react'
-import { useRef } from 'react'
-import handleTicker from './Input'
-import handleNotepad from './Input'
 
 export default function Quest({quest,handleTicker, handleNotepad}) {
-    const selector = useRef()
     function logg(){
     console.log(quest.name)}
     const handleTickerSelector = () =>{
@@ -12,6 +8,7 @@ export default function Quest({quest,handleTicker, handleNotepad}) {
     }
     const handleRadioSelecting = () =>{    
       handleNotepad(quest.key)
+      logg()
     }
   return (
     <div>
