@@ -1,38 +1,121 @@
-.App {
+:root{
+  --colorBC: #FFF;
+  --colorTXT: #000;
+  --colorTAB: #b4ff3a;
+}
+.textOP{
+  opacity: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+#navigationMenu{
+  position: absolute;
+  z-index: 1000;
+  
+}
+#navigationMenu > ul > li{
+  display: inline-block;
+  margin: 50px;
+}
+#ColorSettings{
+  position: absolute;
+  z-index: 1000;
+  bottom: 0;
+}
+#left{
+  background-color: rgb(228, 228, 255);
+  width: 50%;
+  left: 0;
+  height: 100%;
+
+}
+#right{
+  width: 50%;
+  right: 0;
+
+}
+#left, #right {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+#second{
+  padding-left: 35px;
+  padding-top: 35px;
+  text-align: left;
+}
+.EditOfQuestName{
+  width: 45%;
+}
+.EditOfQuestContent{
+  margin-top: 30px;
+  width: 80%;
+  height: auto;
+  resize: none;
+  overflow: hidden;
+}
+.RadioQuest label{
+  color: #000;
+  display: block;
+}
+.RadioQuest input[type="radio"]:checked+label {
+  color: #76cf9f;
+}
+body{
   text-align: center;
+  background-color: var(--colorBC);
+  color: var(--colorTXT);
+}
+table,td,tr{
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  border-spacing: 0px;
+  border-collapse: collapse;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input, button{
+  color: var(--colorTXT);
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  float: left;
+  display: block;
+}
+ol{
+  list-style-type:none;
+  padding:0;
+  margin:0;
+  font-size:18 px;
+  height:2em;
+  line-height:2em;
+  text-align:center;
+  right: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ol > li {
+  float:left;
+  background-color: var(--colorTAB);
+  width:150px;
+  opacity: 0.9;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ol > li > ul {
+  display:none;
+  padding: 10px;
+}
+li{
+  margin: 0px;
+  padding: 0px;
+}
+ol > li:hover > ul {
+  display:block;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
