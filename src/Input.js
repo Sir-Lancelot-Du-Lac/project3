@@ -1,14 +1,14 @@
 import React from 'react'
 import Folder from './Folder';
 import uuidv4 from '../node_modules/uuid/dist/v4'
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Writer from './Writer'
 
 export default function Input() {
     const [Folders,setFolders] = useState([])
     const [currentQuest,setCurrentQuest] = useState({key: "default",name: "defaultName",content:"defaultContent"})
     const NameOfQuest = useRef()
-
+    const LOCAL_STORAGE_KEY = "questsavingkey"
     function logg2(){
         console.log(Folders)
       }
@@ -40,10 +40,25 @@ export default function Input() {
       quest.content = content
       setFolders(newFolders)
     }
+
+    //JSON saving, loading and deleting quests in local storage //
+    useEffect(()=>{
+      console.log(localStorage.getItem(LOCAL_STORAGE_KEY))
+      const loadFolders = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+      if(loadFolders) setFolders((prevFolders)=>[...prevFolders,...loadFolders])
+    },[])
+    useEffect(()=>{
+      localStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(Folders))
+    },[Folders])
+    const deletingLocalStorage = () =>{
+      localStorage.clear()
+      setFolders([])
+    }
+    // ------------- //
   return (
     <div id="Columns">
       <div id="left">
-        <Writer currentQuest={currentQuest} saveQuest={saveQuest}/>
+        <Writer deletingLocalStorage={deletingLocalStorage} currentQuest={currentQuest} saveQuest={saveQuest}/>
       </div>
       <div id="right">
         <div id="first">

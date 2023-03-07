@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-export default function Writer({currentQuest,saveQuest}) {
+export default function Writer({currentQuest,saveQuest, deletingLocalStorage}) {
   const [name, setName] = useState(currentQuest.name)
   const [content, setContent] = useState(currentQuest.content)
   var errorInfo = ""
@@ -15,11 +15,11 @@ export default function Writer({currentQuest,saveQuest}) {
     setName(e.target.value)
 
   }
+
   const handleContent = (e) =>{
     setContent(e.target.value)
     
   };
-
 
   const handleSavingQuest = () =>{
     console.log(currentQuest.key)
@@ -38,6 +38,7 @@ export default function Writer({currentQuest,saveQuest}) {
         <input type="text" className='EditOfQuestName' onChange={handleName} value={name} placeholder="title"/><br/>
         <textarea rows='15' className='EditOfQuestContent' onChange={handleContent} value={content} placeholder="content"/><br/>
         <button onClick={handleSavingQuest}>Save</button>
+        <button onClick={deletingLocalStorage}>Clear</button>
         <p>{errorInfo}</p>
     </div>
   )
