@@ -12,7 +12,7 @@ function App() {
       </div>
       <div>
       <Input/>
-      <ColorSet />
+      <ColorSet/>
       </div>
     </div>
   )

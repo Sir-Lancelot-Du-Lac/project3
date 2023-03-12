@@ -1,17 +1,17 @@
 import React from 'react'
-import Folder from './Folder';
 import uuidv4 from '../node_modules/uuid/dist/v4'
 import { useRef, useState, useEffect } from 'react';
 import Writer from './Writer'
+import Folder from './Folder'
+import Logg from './Logg';
 
-export default function Input() {
+export default function Input(logg2) {
     const [Folders,setFolders] = useState([])
     const [currentQuest,setCurrentQuest] = useState({key: "default",name: "defaultName",content:"defaultContent"})
     const NameOfQuest = useRef()
     const LOCAL_STORAGE_KEY = "questsavingkey"
-    function logg2(){
-        console.log(Folders)
-      }
+
+    // Adding quest and deleting selected //
     const handleAddQuest = (e) =>{
       const QuestName = NameOfQuest.current.value
       if(QuestName==="") return
@@ -20,6 +20,16 @@ export default function Input() {
         return[...prevFolders,{key: uuidv4(),name: QuestName,ticker: false,content: "Placeholdering"}]
       })
     }
+
+    const handleDeleteSelected = () =>{
+      const newFolders = Folders.filter(e=> !e.ticker)
+      setFolders(newFolders)
+    }
+    // ------------------ //
+
+
+
+    // Modifing Quests //
     const handleTicker = (id) =>{
       const newFolders = [...Folders]
       const quest = newFolders.find(quest => quest.key===id)
@@ -31,7 +41,6 @@ export default function Input() {
       const newFolders = [...Folders]
       const quest = newFolders.find(quest => quest.key===id)
       setCurrentQuest({key: quest.key,name: quest.name, content: quest.content})
-      console.log(currentQuest)
     }
     const saveQuest = (name,content,id) =>{
       const newFolders = [...Folders]
@@ -40,6 +49,7 @@ export default function Input() {
       quest.content = content
       setFolders(newFolders)
     }
+    // ------------------ //
 
     //JSON saving, loading and deleting quests in local storage //
     useEffect(()=>{
@@ -54,7 +64,7 @@ export default function Input() {
       localStorage.clear()
       setFolders([])
     }
-    // ------------- //
+    // ------------------ //
   return (
     <div id="Columns">
       <div id="left">
@@ -63,8 +73,9 @@ export default function Input() {
       <div id="right">
         <div id="first">
             <input type="text" ref={NameOfQuest}/>
-            <button onClick={handleAddQuest}>Add your quest</button>
-            <button onClick={logg2}>Logg</button>    
+            <button onClick={handleAddQuest}>Add your quest</button><br/>
+            <Logg elToLog={Folders}/>
+            <button onClick={handleDeleteSelected}>Delete Selected</button>  
         </div>
         <div id="second">
           <form>
